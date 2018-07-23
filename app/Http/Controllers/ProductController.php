@@ -96,9 +96,23 @@ class ProductController extends Controller
      * @param  \App\Model\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
         //
+        $product = Product::find($product);
+
+        $product = new Product;
+        $product->name = $request->name;
+        $product->detail = $request->description;
+        $product->stock = $request->stock;
+        $product->price=$request->price;
+        $product->discount=$request->discount;
+        $product->save();
+
+        return response([
+            'data'=>new ProductResource($product)
+        ],Response::HTTP_CREATED);
+
     }
 
     /**

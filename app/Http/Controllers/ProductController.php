@@ -128,8 +128,10 @@ class ProductController extends Controller
      * @param  \App\Model\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
         //
+        $products = Product::find($id);
+        $products->delete($id);
     }
 }

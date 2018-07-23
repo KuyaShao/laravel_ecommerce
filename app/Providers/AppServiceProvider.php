@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Laravel\Passport\Passport;
+
 //use App\Providers\Schema;
 
 class AppServiceProvider extends ServiceProvider
@@ -16,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         //Schema::defaultStringLength(191);
+        Passport::routes();
     }
 
     /**
